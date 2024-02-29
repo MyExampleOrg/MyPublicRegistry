@@ -28,6 +28,7 @@ jobs:
           
           Pkg.add("LocalRegistry")
           using LocalRegistry
+          using TOML
   
           name = first(split(basename("$(ENV["REPOSITORY_PATH"])"), "."))
   
@@ -37,5 +38,12 @@ jobs:
             commit = true, push = true,
             ignore_reregistration = true,
           )
+
+          path = joinpath(DEPOT_PATH[1], "dev", name)
+          toml = TOML.parsefile(joinpath(path, "Project.toml"))
+          version = VersionNumber(toml["version"])
+          
+          run(Cmd(`git tag -f "v$version"`, dir = path))
+          run(Cmd(`git push --force --tags`, dir = path))
           '
           
