@@ -39,7 +39,7 @@ jobs:
             ignore_reregistration = true,
           )
 
-          path = joinpath(DEPOT_PATH[1], "dev", name)
+          path = joinpath(DEPOT_PATH[1], "dev", name * ".jl")
           toml = TOML.parsefile(joinpath(path, "Project.toml"))
           version = VersionNumber(toml["version"])
           
