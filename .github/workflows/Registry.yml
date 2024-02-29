@@ -5,12 +5,12 @@ on:
       registrator_name:
         description: 'Registrator name for git config'
         required: false
-        default: 'artememelin'
+        default: 'github-actions[bot]'
         type: string
       registrator_email:
         description: 'Registrator email for git config'
         required: false
-        default: 'artememelin@bootcamp-bhft.com'
+        default: 'github-actions[bot]@users.noreply.github.com'
         type: string
 jobs:
   registry:
