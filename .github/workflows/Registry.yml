@@ -44,6 +44,6 @@ jobs:
           version = VersionNumber(toml["version"])
           
           run(Cmd(`git tag -a "v$version" -m "v$version"`, dir = path))
-          run(Cmd(`git push --force --tags`, dir = path))
+          run(Cmd(`git push origin --force --tags`, dir = path))
           '
           
