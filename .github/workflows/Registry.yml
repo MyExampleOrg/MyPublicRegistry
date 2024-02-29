@@ -1,17 +1,6 @@
 name: 'Register a package'
 on:
   workflow_call:
-    inputs:
-      registrator_name:
-        description: 'Registrator name for git config'
-        required: false
-        default: 'github-actions[bot]'
-        type: string
-      registrator_email:
-        description: 'Registrator email for git config'
-        required: false
-        default: 'github-actions[bot]@users.noreply.github.com'
-        type: string
 jobs:
   registry:
     runs-on: ubuntu-latest
@@ -22,12 +11,12 @@ jobs:
       - name: Configure Git
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq git
-          git config --global user.email ${{ inputs.registrator_email }}
-          git config --global user.name ${{ inputs.registrator_name }}
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'github-actions[bot]'
   
       - name: Registration of julia package
         env:
-          JULIA_REGISTRY: "https://${{ secrets.REGISTRATOR_TOKEN_2 }}@github.com/MyExampleOrg/ExampleRegistry.jl"
+          JULIA_REGISTRY: "https://${{ secrets.GITHUB_TOKEN }}@github.com/MyExampleOrg/ExampleRegistry.jl"
           REPOSITORY_PATH: "${{ github.repository }}"#"${{ inputs.repository }}"
         run: |
           julia -e '
