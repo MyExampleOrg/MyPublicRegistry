@@ -1,0 +1,5 @@
+name = "MyPublicRegistry"
+uuid = "867b3359-5924-4dc3-97d2-b76c55085130"
+repo = "https://github.com/MyExampleOrg/MyPublicRegistry"
+
+[packages]
