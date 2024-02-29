@@ -3,3 +3,4 @@ uuid = "867b3359-5924-4dc3-97d2-b76c55085130"
 repo = "https://github.com/MyExampleOrg/MyPublicRegistry"
 
 [packages]
+a6e8d7c3-1fe2-45dc-81fa-a6c45a4fa21b = { name = "MyPublicPkg", path = "M/MyPublicPkg" }

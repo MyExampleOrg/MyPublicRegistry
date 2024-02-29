@@ -1,0 +1,3 @@
+name = "MyPublicPkg"
+uuid = "a6e8d7c3-1fe2-45dc-81fa-a6c45a4fa21b"
+repo = "https://github.com/MyExampleOrg/MyPublicPkg.jl.git"
