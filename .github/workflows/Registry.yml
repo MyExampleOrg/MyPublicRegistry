@@ -44,6 +44,6 @@ jobs:
           version = VersionNumber(toml["version"])
 
           run(`git tag -a "v$version" -m "v$version"`)
-          run(`git push origin "v$version"`)
+          run(`git push --force origin "v$version"`)
           '
           
