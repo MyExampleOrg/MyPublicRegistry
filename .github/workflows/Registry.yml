@@ -16,6 +16,7 @@ jobs:
   
       - name: Registration of julia package
         env:
+          GH_TOKEN: ${{ secrets.REGISTRATOR_TOKEN_2 }}
           JULIA_REGISTRY: "https://${{ secrets.REGISTRATOR_TOKEN_2 }}@github.com/MyExampleOrg/MyPublicRegistry"
           REPOSITORY_PATH: "${{ github.repository }}"
         run: |
