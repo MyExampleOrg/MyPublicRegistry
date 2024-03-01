@@ -43,8 +43,7 @@ jobs:
           toml = TOML.parsefile(joinpath(path, "Project.toml"))
           version = VersionNumber(toml["version"])
 
-          # run(`git tag -a "v$version" -m "v$version"`)
-          # run(`git push --force "v$version"`)
+          run(`git tag -a "v$version" -m "v$version"`)
           run(`git push origin "v$version"`)
           '
           
