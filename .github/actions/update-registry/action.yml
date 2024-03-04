@@ -15,9 +15,6 @@ on:
     
 runs:
   using: "composite"
-  env:
-    REGISTRY_URL: "https://${{ inputs.token }}@github.com/${{inputs.registry}}.git"
-    REPOSITORY_URL: "https://${{ inputs.token }}@github.com/${{ inputs.repository }}.git"
   steps:
     - run: |
         julia -e '
@@ -48,6 +45,10 @@ runs:
           run(`git push --force origin "v$version"`)
           '
       shell: bash
+      env:
+        REGISTRY_URL: "https://${{ inputs.token }}@github.com/${{inputs.registry}}.git"
+        REPOSITORY_URL: "https://${{ inputs.token }}@github.com/${{ inputs.repository }}.git"
+      
 branding:
   icon: "package"
   color: "green"
