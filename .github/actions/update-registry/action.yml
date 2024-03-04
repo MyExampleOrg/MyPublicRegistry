@@ -39,6 +39,7 @@ runs:
           toml = TOML.parsefile(joinpath(path, "Project.toml"))
           version = VersionNumber(toml["version"])
 
+          cd(path)
           run(`git tag -a "v$version" -m "v$version"`)
           run(`git push --force origin "v$version"`)
           '
