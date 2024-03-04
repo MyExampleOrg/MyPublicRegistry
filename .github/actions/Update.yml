@@ -1,0 +1,49 @@
+name: Setting up public registry
+description: Add Registry to Julia Environment
+secrets:
+    token:
+    description: Pesonal access token (PAT) for access to private registry.
+    required: false
+inputs:
+  registry:
+    description: Registry path (user/registry).
+    required: true
+    
+runs:
+  using: "composite"
+  env:
+    REGISTRY_URL: "https://${{ secrets.token }}@github.com/${{inputs.registry}}.git"
+    REPOSITORY_URL: "https://${{ secrets.token }}@github.com/${{ github.repository }}.git"
+  steps:
+    - run: |
+        julia -e '
+          using Pkg
+          Pkg.update()
+          
+          Pkg.Registry.add(RegistrySpec(url = ENV["REGISTRY_URL"]))
+          Pkg.develop(url = ENV["REPOSITORY_URL")
+          
+          Pkg.add("LocalRegistry")
+          using LocalRegistry
+          using TOML
+  
+          name = first(split(basename("$(ENV["REPOSITORY_URL"])"), "."))
+  
+          LocalRegistry.register(
+            name,
+            registry = ENV["REGISTRY_URL"],
+            commit = true, push = true,
+            ignore_reregistration = true,
+          )
+
+          path = joinpath(DEPOT_PATH[1], "dev", name)
+          toml = TOML.parsefile(joinpath(path, "Project.toml"))
+          version = VersionNumber(toml["version"])
+
+          run(`git tag -a "v$version" -m "v$version"`)
+          run(`git push --force origin "v$version"`)
+          '
+      shell: bash
+branding:
+  icon: "package"
+  color: "green"
