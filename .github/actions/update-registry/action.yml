@@ -13,8 +13,8 @@ on:
 runs:
   using: "composite"
   env:
-    REGISTRY_URL: "https://${{ secrets.token }}@github.com/${{inputs.registry}}.git"
-    REPOSITORY_URL: "https://${{ secrets.token }}@github.com/${{ github.repository }}.git"
+    REGISTRY_URL: "https://${{ inputs.token }}@github.com/${{inputs.registry}}.git"
+    REPOSITORY_URL: "https://${{ inputs.token }}@github.com/${{ github.repository }}.git"
   steps:
     - run: |
         julia -e '
