@@ -4,12 +4,13 @@ inputs:
   token:
     description: Pesonal access token (PAT) for access to private registry.
     required: false
+    default: ${{ github.token }}
   registry:
     description: Registry path (user/registry).
     required: true
-  repository:
-    description: Repository path (user/repository).
-    required: true
+  # repository:
+  #   description: Repository path (user/repository).
+  #   required: true
     
 runs:
   using: "composite"
