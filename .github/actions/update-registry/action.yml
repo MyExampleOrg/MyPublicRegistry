@@ -1,5 +1,5 @@
-name: Setting up public registry
-description: Add Registry to Julia Environment
+name: Update registry
+description: Update package version info in registry
 inputs:
   token:
     description: Pesonal access token (PAT) for access to private registry.
@@ -46,7 +46,7 @@ runs:
       shell: bash
       env:
         REGISTRY_URL: "https://${{ inputs.token }}@github.com/${{inputs.registry}}.git"
-        REPOSITORY_URL: "https://${{ inputs.token }}@github.com/${{ inputs.repository }}.git"
+        REPOSITORY_URL: "https://${{ inputs.token }}@github.com/${{ github.repository }}.git"
       
 branding:
   icon: "package"
