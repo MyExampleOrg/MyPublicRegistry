@@ -1,17 +1,15 @@
 name: Setting up public registry
 description: Add Registry to Julia Environment
-on:
-  workflow_call:
-    inputs:
-      token:
-        description: Pesonal access token (PAT) for access to private registry.
-        required: false
-      registry:
-        description: Registry path (user/registry).
-        required: true
-      repository:
-        description: Repository path (user/repository).
-        required: true
+inputs:
+  token:
+    description: Pesonal access token (PAT) for access to private registry.
+    required: false
+  registry:
+    description: Registry path (user/registry).
+    required: true
+  repository:
+    description: Repository path (user/repository).
+    required: true
     
 runs:
   using: "composite"
@@ -22,7 +20,7 @@ runs:
           Pkg.update()
           
           Pkg.Registry.add(RegistrySpec(url = ENV["REGISTRY_URL"]))
-          Pkg.develop(url = ENV["REPOSITORY_URL")
+          Pkg.develop(url = ENV["REPOSITORY_URL"])
           
           Pkg.add("LocalRegistry")
           using LocalRegistry
