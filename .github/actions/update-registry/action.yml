@@ -40,7 +40,7 @@ runs:
           version = VersionNumber(toml["version"])
 
           cd(path)
-          run(`git tag -a "v$version" -m "v$version"`)
+          run(`git tag -f "v$version"`)
           run(`git push --force origin "v$version"`)
           '
       shell: bash
