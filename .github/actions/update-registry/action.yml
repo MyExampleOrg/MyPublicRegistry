@@ -2,11 +2,10 @@ name: Setting up public registry
 description: Add Registry to Julia Environment
 on:
   workflow_call:
-    secrets:
-        token:
+    inputs:
+      token:
         description: Pesonal access token (PAT) for access to private registry.
         required: false
-    inputs:
       registry:
         description: Registry path (user/registry).
         required: true
