@@ -3,4 +3,3 @@ uuid = "867b3359-5924-4dc3-97d2-b76c55085130"
 repo = "https://github.com/MyExampleOrg/MyPublicRegistry"
 
 [packages]
-3ed6c5b6-575b-460a-8104-4a88f384643e = { name = "MyCompatPkg", path = "M/MyCompatPkg" }
